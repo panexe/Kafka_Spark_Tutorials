@@ -93,6 +93,12 @@ $ /usr/local/kafka/bin/kafka-topics.sh --create --zookeeper localhost:2181 --rep
 ````
 
 ### 6 Test your Kafka instance 
-Kafka comes with to a console-producer and console-consumer script to test 
-
-
+Kafka comes with to a console-producer and console-consumer script to test your installation. Open one terminal an run (the bootstrap server ip adress, should be one of your kafka instances): 
+````
+$ /usr/local/kafka/bin/kafka-console-consumer.sh --topic myTopic --bootstrap-server <ip-address>  
+````
+In another terminal run : 
+````
+$ /usr/local/kafka/bin/kafka-console-producer.sh --topic myTopic --bootstrap-server <ip-address>  
+````
+Now write some message in the producer terminal. It should be printed in the consumer terminal. If so your installtion works. 
