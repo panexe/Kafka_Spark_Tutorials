@@ -47,7 +47,7 @@ Start zookeeper as a daemon
 ````
 $ ./bin/zookeeper-server-start.sh -daemon ./config/zookeeper.properties
 ````
-Now we start our Kafka brokers. If you have them running on multiple machines you need to use the address of your host, that runs zookeeper ([ip-address]:2181) for the zookeper-argument. For each broker you need a seperate config file. In the config file, the *broker-id*, the *host ip/port* and *logs-dir* should be changed. 
+Now we start our Kafka brokers. For each broker you need a seperate config file. In the config file, the *broker-id*, the *host ip/port* and *logs-dir* should be changed. If you have them running on multiple machines you need to use the address of your host, that runs zookeeper ([ip-address]:2181) for the zookeper-argument.
 
 Copy and edit a config file
 ````
@@ -62,6 +62,8 @@ broker.id = 1
 listeners=PLAINTEXT://<ip-address>:9093
 ... 
 log.dirs=/tmp/kafka-logs-1/
+...
+zookeeper.connect=<ip-address>:<port>
 ...
 ````
 Start the broker itself 
@@ -92,7 +94,7 @@ Example:
 $ /usr/local/kafka/bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 3 --partitions 1 --topic myTopic 
 ````
 
-### 6 Test your Kafka instance 
+### 6. Test your Kafka instance 
 Kafka comes with to a console-producer and console-consumer script to test your installation. Open one terminal an run (the bootstrap server ip adress, should be one of your kafka instances): 
 ````
 $ /usr/local/kafka/bin/kafka-console-consumer.sh --topic myTopic --bootstrap-server <ip-address>  
