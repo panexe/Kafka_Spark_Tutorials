@@ -1,3 +1,4 @@
+
 # Setup Kafka Server
 ### 1.  Install Ubuntu (this tutorial uses 20.04 LTS)
 ### 2.  Create non root user with sudo priviliges
@@ -47,7 +48,7 @@ Start zookeeper as a daemon
 ````
 $ ./bin/zookeeper-server-start.sh -daemon ./config/zookeeper.properties
 ````
-Now we start our Kafka brokers. For each broker you need a seperate config file. In the config file, the *broker-id*, the *host ip/port* and *logs-dir* should be changed. If you have them running on multiple machines you need to use the address of your host, that runs zookeeper ([ip-address]:2181) for the zookeper-argument.
+Now we start our Kafka brokers. For each broker you need a seperate config file. In the config file, the *broker-id*, the *host ip/port* and *logs-dir* should be changed. If you have them running on multiple machines you need to use the address of your host, that runs zookeeper ([ip-address]:2181) for the zookeper-argument. If your nodes need to be accesed from diffrent networks you should set `advertised.listeners=<public-address>:<port>`. Also make shure that all firewall-rules are set accordingly.
 
 Copy and edit a config file
 ````
